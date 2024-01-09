@@ -9,14 +9,14 @@ body {
 
 #eventImage {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0 auto;
     display: block;
 }
 
 .animated-border {
     position: absolute;
-    bottom: -10px;
+    bottom: -50px;
     left: 0;
     width: 100%; /* Set to 100% */
     font-size: 24px;
@@ -48,12 +48,14 @@ body {
 h1 {
     margin-bottom: 20px;
     display: block;
+    padding-top: 50px;
 }
 
 .ticket-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 50px;
 }
 
 .ticket {
@@ -77,6 +79,10 @@ button {
 .ticket-buttons{
     display: block;
     margin: 0 auto;
+}
+
+.carousel-image{
+   height: 500px;
 }
 
 /* Media query for larger screens */
