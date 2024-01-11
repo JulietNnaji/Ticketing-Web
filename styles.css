@@ -1,6 +1,9 @@
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
+            font-size: 18px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
 }
 
 .header {
@@ -18,7 +21,7 @@ body {
     position: absolute;
     bottom: -50px;
     left: 0;
-    width: 100%; /* Set to 100% */
+    width: 100%;
     font-size: 24px;
     white-space: nowrap;
     overflow: hidden;
@@ -28,7 +31,7 @@ body {
 
 .animated-text {
     display: inline-block;
-    animation: moveText 10s linear infinite; /* Adjust duration as needed */
+    animation: moveText 10s linear infinite;
 }
 
 @keyframes moveText {
@@ -40,79 +43,103 @@ body {
     }
 }
 
-.content {
-    text-align: center;
-    padding: 20px;
-}
+ .ticket-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 15px; 
+            text-align: right;
+            background: white;
+            border-radius: 5px;
+        }
 
-h1 {
-    margin-bottom: 20px;
-    display: block;
-    padding-top: 50px;
-}
+        .ticket {
+            border: 1px solid #ddd;
+            padding: 40px 20px;
+            margin: 10px;
+            height: 300px;
+            width: calc(45% - 20px); /* Two sections in a row with 20px margin in between */
+            text-align: right;
+            box-sizing: border-box;
+            background-size: 400% 400%;
+            animation: gradientAnimation 5s ease infinite;
+            border-radius: 5px;
+        }
 
-.ticket-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 50px;
-}
+        .platinum-ticket {
+            background-image: url(Images/fifth-image.jpg);
+            background-size: cover;
+        }
 
-.ticket {
-    margin: 10px;
-    width: 100%; /* Full width by default */
-    max-width: 300px; /* Set a fixed width for the images */
-}
+        .comfort-ticket {
+            background-image: url(Images/fourth-image.jpg);
+            background-size: cover;
+        }
 
-.ticket img {
-    width: 100%;
-    height: auto;
-}
+        .vip-ticket {
+            background-image: url(Images/third-image.jpg);
+            background-size: cover;
+        }
 
-button {
-    margin-top: 10px;
-    padding: 10px;
-    font-size: 16px;
-    background: #BC2303;
-    color: #F5DB51;
-}
-.ticket-buttons{
-    display: block;
-    margin: 0 auto;
-}
+        .regular-ticket {
+            background-image: url(Images/second-image.jpg);
+            background-size: cover;
+        }
 
-.carousel-image{
-   height: 500px;
-}
+        .get-tickets-btn {
+            background-color:#BC2303;
+            color: #F5DB51;
+            padding: 10px 10px;
+            border-radius: 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 29px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border: none;
+        }
+        .get-tickets-btn:hover, .platinum-ticket-link:hover, .comfort-ticket-link:hover{
+            background: #F5DB51;
+            color: #BC2303;
+            cursor: pointer;
+        }
+        .platinum-ticket-link, .comfort-ticket-link{
+            text-decoration: none;
+            color: #F5DB51;
+        }
 
-/* Media query for larger screens */
-@media screen and (min-width: 768px) {
-    #eventImage {
-        width: 70%; /* Adjust the width as needed */
-    }
 
-    .animated-text {
-        font-size: 18px; /* Adjust the font size as needed */
-    }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    h1 {
-        display: none;
-    }
-    #carouselExampleCaptions{
-        display: none;
-    }
+            /* Media query for responsive layout */
+            @media screen and (max-width: 768px) {
+            .ticket {
+                width: calc(100% - 20px); /* One section in a row on smaller screens */
 
-    .ticket {
-        width: calc(25% - 20px); /* Adjust width for side-by-side images */
-    }
-}
+            }
+        
+            .animated-text {
+                font-size: 18px; 
+            }
+        }
 
-/* Media query for smaller screens */
-@media screen and (max-width: 767px) {
-    .ticket-container {
-       display: none;
-    }
-    button{
-        padding:10px 50px 10px 50px;
-    }
-}
+         /* Media query for large screen layout */
+         @media screen and (min-width: 768px) {
+           
+            #eventImage {
+                width: 70%; 
+            }
+        }

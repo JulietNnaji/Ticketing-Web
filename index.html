@@ -2,85 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>USHBEBE TICKETING WEBSITE</title>
 </head>
 <body>
     <div class="header">
         <img src="Images/first-image.jpg" alt="Event Image" id="eventImage">
         <div class="animated-border" id="borderAnimation">
-            <span class="animated-text">Get Your Ticket Now! Get Your Ticket Now!! Get Your Ticket Now!!!</span>
+            <h1 class="animated-text">Get Your Ticket Now! Get Your Ticket Now!! Get Your Ticket Now!!!</h1>
         </div>
     </div>
-
-    <div class="content">
-        <h1>Swipe to see more</h1>
-
-        <div class="ticket-container">
-            <div class="ticket" id="regularTicket">
-                <img src="Images/second-image.jpg" alt="Regular Ticket">
-                <button onclick="redirectToPage('regular-ticket-page.html')">REGULAR TICKET</button>
+        <section class="ticket-section">
+            <div class="ticket regular-ticket" id="regularTicket">
+                <h2 style="opacity: 0;">Regular Ticket</h2>
+                <p style="opacity: 0;">Regular ticket for individuals with a great view</p>
+                <p style="opacity: 0;">N10,000.00</p>
+                <button class="get-tickets-btn regular-ticket-btn" onclick="storeTicketInfo('Regular', 10000)">GET TICKETS</button>
             </div>
 
-            <div class="ticket" id="vipTicket">
-                <img src="Images/third-image.jpg" alt="VIP Ticket">
-                <button onclick="redirectToPage('vip-ticket-page.html')">VIP TICKET</button>
+            <div class="ticket vip-ticket" id="vipTicket">
+                <h2 style="opacity: 0;">VIP Ticket</h2>
+                <p style="opacity: 0;">VIP ticket for individuals with a great view</p>
+                <p style="opacity: 0;">N30,000</p>
+                <button class="get-tickets-btn vip-ticket-btn" onclick="storeTicketInfo('VIP', 30000)">GET TICKETS</button>
             </div>
 
-            <div class="ticket" id="premiumComfortTicket">
-                <img src="Images/fourth-image.jpg" alt="Premium Comfort Ticket">
-                <button onclick="redirectToPage('premium-comfort-ticket-page.html')">PREMIUM COMFORT TICKET</button>
-            </div>
-
-            <div class="ticket" id="premiumLuxuryTicket">
-                <img src="Images/fifth-image.jpg" alt="Premium Luxury Ticket">
-                <button onclick="redirectToPage('premium-luxury-ticket-page.html')">PREMIUM LUXURY TICKET</button>
-            </div>
+             <div class="ticket comfort-ticket">
+                <h2 style="opacity: 0;">Platinum Comfort Ticket</h2>
+                <p style="opacity: 0;">Platinum Comfort ticket for individuals with a great view</p>
+                <p style="opacity: 0;">N2,000,000.00</p>
+            <button class="get-tickets-btn"><a href="contact.html" class="comfort-ticket-link">GET TICKETS</a></button>
         </div>
-    </div>
 
-    <div id="carouselExampleCaptions" class="carousel slide">
-        
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="Images/second-image.jpg" class="d-block w-100 carousel-image" alt="regularTicket">
-            <div class="carousel-caption">
-            </div>
-            <button onclick="redirectToPage('regular-ticket-page.html')" class="ticket-buttons">REGULAR TICKET</button>
-          </div>
-          <div class="carousel-item">
-            <img src="Images/third-image.jpg" class="d-block w-100 carousel-image" alt="vipTicket">
-            <div class="carousel-caption">
-            </div>
-            <button onclick="redirectToPage('vip-ticket-page.html')" class="ticket-buttons">VIP TICKET</button>
-          </div>
-          <div class="carousel-item">
-            <img src="Images/fourth-image.jpg" class="d-block w-100 carousel-image" alt="premiumComfortTicket">
-            <div class="carousel-caption">
-            </div>
-            <button onclick="redirectToPage('premium-comfort-ticket-page.html')" class="ticket-buttons">PREMIUM COMFORT TICKET</button>
-          </div>
-          <div class="carousel-item">
-            <img src="Images/fifth-image.jpg" class="d-block w-100 carousel-image" alt="premiumLuxuryTicket">
-            <div class="carousel-caption">
-            </div>
-            <button onclick="redirectToPage('premium-luxury-ticket-page.html')" class="ticket-buttons">PREMIUM LUXURY TICKET</button>
-          </div>
+        <div class="ticket platinum-ticket">
+            <h2 style="opacity: 0;">Platinum Luxury Ticket</h2>
+            <p style="opacity: 0;">Platinum Luxury for individuals with a great view</p>
+            <p style="opacity: 0;">N3,000,000.00</p>
+            <button class="get-tickets-btn"><a href="contact.html" class="platinum-ticket-link">GET TICKETS</a></button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      
+    </section>
 
-    <script src="script.js"></script>
+    <script>
+        function storeTicketInfo(ticketType, ticketDescription, ticketPrice) {
+            // Store ticket information in local storage
+            localStorage.setItem('ticketType', ticketType);
+            localStorage.setItem('ticketDescription', ticketDescription);
+            localStorage.setItem('ticketPrice', ticketPrice);
+
+            // Redirect to the registeration page
+            window.location.href = 'registeration.html';
+        }
+    </script>
+   <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

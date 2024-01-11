@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
+    <title>Contact Us</title>
+    <style>  
+        body {
+            font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 { 
+            font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
+            color: #BC2303;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .contact-info { 
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .contact-info span {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .contact-info p,  .contact-info span {
+            font-size: 18px;
+            color: #BC2303;
+            margin: 0;
+        }
+        .contact-info p{
+            margin-top: 20px;
+        }
+        .animation-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 style="font-size: 50px;">Contact Us</h1>
+
+        <div class="animation-container"></div>
+        <div class="contact-info animated">
+            <span style="font-size: 35px;">📞 Phone:</span>
+            <p>+234 907-770-1699</p>
+        </div>
+        <div class="contact-info animated">
+            <p style="font-size: 35px;">for sponsorships or table ticket reservations</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
