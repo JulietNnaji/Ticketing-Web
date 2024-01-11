@@ -17,25 +17,26 @@
             <h1 class="animated-text">Get Your Ticket Now! Get Your Ticket Now!! Get Your Ticket Now!!!</h1>
         </div>
     </div>
-        <section class="ticket-section">
-            <div class="ticket regular-ticket" id="regularTicket">
-                <h2 style="opacity: 0;">Regular Ticket</h2>
-                <p style="opacity: 0;">Regular ticket for individuals with a great view</p>
-                <p style="opacity: 0;">N10,000.00</p>
-                <button class="get-tickets-btn regular-ticket-btn" onclick="storeTicketInfo('Regular', 10000)">GET TICKETS</button>
-            </div>
+    
+    <section class="ticket-section">
+        <div class="ticket regular-ticket" id="regularTicket">
+            <h2 style="opacity: 0;">Regular Ticket</h2>
+            <p style="opacity: 0;">Regular ticket for individuals with a great view</p>
+            <p style="opacity: 0;">N10,000.00</p>
+            <button class="get-tickets-btn regular-ticket-btn" onclick="storeTicketInfo('Regular', 10000)">GET TICKETS</button>
+        </div>
 
-            <div class="ticket vip-ticket" id="vipTicket">
-                <h2 style="opacity: 0;">VIP Ticket</h2>
-                <p style="opacity: 0;">VIP ticket for individuals with a great view</p>
-                <p style="opacity: 0;">N30,000</p>
-                <button class="get-tickets-btn vip-ticket-btn" onclick="storeTicketInfo('VIP', 30000)">GET TICKETS</button>
-            </div>
+        <div class="ticket vip-ticket" id="vipTicket">
+            <h2 style="opacity: 0;">VIP Ticket</h2>
+            <p style="opacity: 0;">VIP ticket for individuals with a great view</p>
+            <p style="opacity: 0;">N30,000</p>
+            <button class="get-tickets-btn vip-ticket-btn" onclick="storeTicketInfo('VIP', 30000)">GET TICKETS</button>
+        </div>
 
-             <div class="ticket comfort-ticket">
-                <h2 style="opacity: 0;">Platinum Comfort Ticket</h2>
-                <p style="opacity: 0;">Platinum Comfort ticket for individuals with a great view</p>
-                <p style="opacity: 0;">N2,000,000.00</p>
+        <div class="ticket comfort-ticket">
+            <h2 style="opacity: 0;">Platinum Comfort Ticket</h2>
+            <p style="opacity: 0;">Platinum Comfort ticket for individuals with a great view</p>
+            <p style="opacity: 0;">N2,000,000.00</p>
             <button class="get-tickets-btn"><a href="contact.html" class="comfort-ticket-link">GET TICKETS</a></button>
         </div>
 
@@ -48,17 +49,13 @@
     </section>
 
     <script>
-        function storeTicketInfo(ticketType, ticketDescription, ticketPrice) {
-            // Store ticket information in local storage
+        function storeTicketInfo(ticketType, ticketPrice) {
             localStorage.setItem('ticketType', ticketType);
-            localStorage.setItem('ticketDescription', ticketDescription);
             localStorage.setItem('ticketPrice', ticketPrice);
-
-            // Redirect to the registeration page
             window.location.href = 'registeration.html';
         }
     </script>
-   <script src="scripts.js"></script>
+    <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

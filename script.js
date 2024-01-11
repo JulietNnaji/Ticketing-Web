@@ -2,21 +2,8 @@ window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
     loader.classList.add("loader-hidden");
     loader.addEventListener("transitionend", () => {
-        document.body.removeChild("loader");
-    })
-
-    // Initialize the form title and total price on page load
-    document.getElementById("formTitle").innerText = localStorage.getItem('ticketType') + ' Ticket Registeration Form';
-    document.getElementById("totalPrice").innerText = 'N' + localStorage.getItem('ticketPrice');
-
-    // Dynamically set the form title based on the ticket type
-    function setTicketInfo(type, price) {
-        localStorage.setItem('ticketType', type);
-        localStorage.setItem('ticketPrice', price);
-        document.getElementById("formTitle").innerText = type + ' Ticket Registeration Form';
-        document.getElementById("totalPrice").innerText = 'N' + price;
-        window.location.href = "registeration.html";
-    }
+        document.body.removeChild(loader);
+    });
 
     document.getElementById("tickets").addEventListener("change", function () {
         var ticketDetails = document.getElementById("ticketDetails");
@@ -52,21 +39,17 @@ window.addEventListener("load", () => {
             ticketDetails.style.display = "none";
         }
 
-        // Update the total price
         updateTotalPrice();
     });
 
     function updateTotalPrice() {
         var numberOfTickets = document.getElementById("tickets").value;
         var ticketPrice = localStorage.getItem('ticketPrice');
-
-        // Calculate the total price
         var totalPrice = numberOfTickets * ticketPrice;
-
-        // Display the total price
         document.getElementById("totalPrice").innerText = 'N' + totalPrice.toFixed(2);
     }
-})
+});
+
 
 function submitForm() {
 

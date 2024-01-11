@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
     <title>Event Registration</title>
     <style>
-        body {
+       body {
             font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
             margin: 0;
             padding: 0;
@@ -100,9 +100,7 @@
         }
     </style>
 </head>
-
 <body>
-
     <div class="container">
         <form action="">
             <h1 id="formTitle">Registration Form</h1>
@@ -136,20 +134,85 @@
                 <div id="ticketFields"></div>
             </div>
 
-            <!-- <button type="button" onclick="submitForm()">Submit</button> -->
-            <button type="submit" class="submit-form-button" name="submit-form-button" id="submit-form-button"
-                onclick="submitForm()">
+            <button type="submit" class="submit-form-button" name="submit-form-button" id="submit-form-button" onclick="submitForm()">
                 <span class="btn-text">Submit</span>
             </button>
         </form>
-
     </div>
 
     <div class="loader"></div>
 
     <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader-hidden");
+            loader.addEventListener("transitionend", () => {
+                document.body.removeChild("loader");
+            });
+
+            // Initialize the form title and total price on page load
+            document.getElementById("formTitle").innerText = localStorage.getItem('ticketType') + ' Ticket Registration Form';
+            document.getElementById("totalPrice").innerText = 'N' + localStorage.getItem('ticketPrice');
+
+            // Dynamically set the form title based on the ticket type
+            function setTicketInfo(type, price) {
+                localStorage.setItem('ticketType', type);
+                localStorage.setItem('ticketPrice', price);
+                document.getElementById("formTitle").innerText = type + ' Ticket Registration Form';
+                document.getElementById("totalPrice").innerText = 'N' + price;
+                window.location.href = "registeration.html";
+            }
+
+            document.getElementById("tickets").addEventListener("change", function () {
+                var ticketDetails = document.getElementById("ticketDetails");
+                var ticketFields = document.getElementById("ticketFields");
+                ticketFields.innerHTML = "";
+
+                if (this.value > 1) {
+                    ticketDetails.style.display = "block";
+                    for (var i = 1; i <= this.value; i++) {
+                        var nameLabel = document.createElement("label");
+                        nameLabel.textContent = "Ticket Holder " + i + " Name:";
+                        ticketFields.appendChild(nameLabel);
+
+                        var nameInput = document.createElement("input");
+                        nameInput.type = "text";
+                        nameInput.id = "ticketName" + i;
+                        nameInput.name = "ticketName" + i;
+                        nameInput.placeholder = "Enter ticket holder " + i + "'s name";
+                        ticketFields.appendChild(nameInput);
+
+                        var emailLabel = document.createElement("label");
+                        emailLabel.textContent = "Ticket Holder " + i + " Email:";
+                        ticketFields.appendChild(emailLabel);
+
+                        var emailInput = document.createElement("input");
+                        emailInput.type = "email";
+                        emailInput.id = "ticketEmail" + i;
+                        emailInput.name = "ticketEmail" + i;
+                        emailInput.placeholder = "Enter ticket holder " + i + "'s email";
+                        ticketFields.appendChild(emailInput);
+                    }
+                } else {
+                    ticketDetails.style.display = "none";
+                }
+
+                // Update the total price
+                updateTotalPrice();
+            });
+
+            function updateTotalPrice() {
+                var numberOfTickets = document.getElementById("tickets").value;
+                var ticketPrice = localStorage.getItem('ticketPrice');
+                var totalPrice = numberOfTickets * ticketPrice;
+                document.getElementById("totalPrice").innerText = 'N' + totalPrice.toFixed(2);
+            }
+        });
+
+        function submitForm() {
+            // ... existing code ...
+        }
     </script>
     <script src="scripts.js"></script>
 </body>
-
 </html>
