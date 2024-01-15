@@ -24,8 +24,17 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: bounce 1s infinite alternate;
 }
-
+@keyframes bounce {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(10px);
+        }
+    }
+   
         h1 {
             font-family: 'Instrument Serif', serif;
              font-size: 25px;
@@ -98,6 +107,32 @@
             h1 {
                 font-size: 20px;
             }
+            .container::after {
+    content: "\25BC"; /* Unicode arrow down character */
+    font-size: 30px;
+    color: #F5DB51;
+    position: absolute;
+    bottom: 20px;
+    left: 95%;
+    transform: translateX(-50%);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(10px);
+        opacity: 0.5;
+    }
+}
+
+
         }
     </style>
 </head>
@@ -211,9 +246,23 @@
         });
 
         function submitForm() {
-            // ... existing code ...
+        
         }
     </script>
-    <script src="scripts.js"></script>
+    <script src="scripts.js">
+       document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".container");
+    const arrow = document.querySelector(".container::after");
+
+    container.addEventListener("scroll", function () {
+        if (container.scrollTop > 0) {
+            arrow.style.display = "none";
+        } else {
+            arrow.style.display = "block";
+        }
+    });
+});
+
+    </script>
 </body>
 </html>
