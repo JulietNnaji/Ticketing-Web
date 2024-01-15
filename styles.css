@@ -1,6 +1,6 @@
 body {
-    font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
-            font-size: 18px;
+    font-family: 'Playfair Display', serif;
+       font-size: 18px;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -90,11 +90,11 @@ body {
         .get-tickets-btn {
             background-color:#BC2303;
             color: #F5DB51;
-            padding: 10px 10px;
-            border-radius: 20px;
+            padding: 10px 50px 10px 50px;
+            border-radius: 2px;
             text-align: center;
             display: inline-block;
-            font-size: 14px;
+            font-size: 16px;
             margin-top: 29px;
             margin-bottom: 10px;
             margin-left: 10px;
