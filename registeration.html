@@ -16,15 +16,15 @@
         }
 
         .container {
-    max-width: 300px;
-    max-height: 350px; 
+    max-width: 250px;
+    max-height: 450px; 
     overflow-y: auto;
     margin: 50px auto;
     background-color: #551103;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: bounce 1s infinite alternate;
+    animation: bounce 0.5s infinite alternate;
 }
 @keyframes bounce {
         from {
@@ -63,6 +63,8 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
         }
 
         input:focus,
@@ -88,6 +90,7 @@
             font-size: 14px;
             margin-top: 15px;
             margin-bottom: 5px;
+           
         }
 
         button:hover {
@@ -107,32 +110,6 @@
             h1 {
                 font-size: 20px;
             }
-            .container::after {
-    content: "\25BC"; /* Unicode arrow down character */
-    font-size: 30px;
-    color: #F5DB51;
-    position: absolute;
-    bottom: 20px;
-    left: 95%;
-    transform: translateX(-50%);
-    animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: translateY(0);
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(10px);
-        opacity: 0.5;
-    }
-}
-
-
         }
     </style>
 </head>
