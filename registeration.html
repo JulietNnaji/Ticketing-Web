@@ -171,8 +171,16 @@
             });
 
             // Initialize the form title and total price on page load
-            document.getElementById("formTitle").innerText = 'Regular Ticket Registration Form';
-            document.getElementById("totalPrice").innerText = 'N/A';
+            window.addEventListener("load", () => {
+    const defaultTicketType = document.getElementById("ticketType").value;
+    const defaultTicketPrice = defaultTicketType === "vip" ? 30000 : 10000;
+
+    localStorage.setItem('ticketType', defaultTicketType);
+    localStorage.setItem('ticketPrice', defaultTicketPrice);
+
+    document.getElementById("formTitle").innerText = defaultTicketType.charAt(0).toUpperCase() + defaultTicketType.slice(1) + ' Ticket Registration Form';
+    document.getElementById("totalPrice").innerText = 'N' + defaultTicketPrice;
+});
 
             // Dynamically set the form title based on the ticket type
             function setTicketInfo(type, price) {
