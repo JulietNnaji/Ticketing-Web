@@ -4,40 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <title>Event Registration</title>
     <style>
-       body {
-        font-family: 'Instrument Serif', serif;
-         margin: 0;
+        body {
+            font-family: 'Instrument Serif', serif;
+            margin: 0;
             padding: 0;
             background-color: black;
         }
 
         .container {
-    max-width: 350px;
-    max-height: 450px; 
-    overflow-y: auto;
-    margin: 50px auto;
-    background-color: #551103;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: bounce 0.5s infinite alternate;
-}
-@keyframes bounce {
-        from {
-            transform: translateY(0);
+            max-width: 350px;
+            max-height: 450px;
+            overflow-y: auto;
+            margin: 50px auto;
+            margin-bottom: 25px;
+            background-color: #551103;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: bounce 0.5s infinite alternate;
         }
-        to {
-            transform: translateY(10px);
+
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(10px);
+            }
         }
-    }
-   
+
         h1 {
             font-family: 'Instrument Serif', serif;
-             font-size: 25px;
+            font-size: 25px;
             text-align: center;
             color: #F5DB51;
         }
@@ -71,31 +73,30 @@
         select:focus {
             border-color: #007bff;
             transform: scale(1.05);
+            height: 50px;
+            font-size: 25px;
         }
 
         input:hover,
         select:hover {
             border-color: #B08D57;
-            ;
         }
 
-        button{
-            background-color:#BC2303;
+        button {
+            background-color: #BC2303;
             color: #F5DB51;
-            padding: 10px 100px 10px 100px;
+            padding: 12px 120px 12px 120px;
             border-radius: 6px;
             text-align: center;
-           display: block;
-           margin: 0 auto;
+            display: block;
+            margin: 0 auto;
             font-size: 14px;
-            margin-top: 15px;
+            margin-top: 0;
             margin-bottom: 5px;
-           
         }
 
         button:hover {
             background-color: #B08D57;
-            ;
         }
 
         #ticketDetails {
@@ -128,8 +129,14 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
 
+            <label for="ticket-type">Ticket Type:</label>
+            <select id="ticketType" name="ticket-type" onchange="updateTicketPrice()">
+                <option value="regular">Regular</option>
+                <option value="vip">VIP</option>
+            </select>
+
             <label for="tickets">Number of Tickets:</label>
-            <select id="tickets" name="tickets">
+            <select id="tickets" name="tickets" onchange="updateTotalPrice()">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -147,11 +154,11 @@
                 <div id="ticketFields"></div>
             </div>
 
-            <button type="submit" class="submit-form-button" name="submit-form-button" id="submit-form-button" onclick="submitForm()">
-                <span class="btn-text">Submit</span>
-            </button>
         </form>
     </div>
+    <button type="submit" class="submit-form-button" name="submit-form-button" id="submit-form-button" onclick="submitForm()">
+        <span class="btn-text">Submit</span>
+    </button>
 
     <div class="loader"></div>
 
@@ -164,8 +171,8 @@
             });
 
             // Initialize the form title and total price on page load
-            document.getElementById("formTitle").innerText = localStorage.getItem('ticketType') + ' Ticket Registration Form';
-            document.getElementById("totalPrice").innerText = 'N' + localStorage.getItem('ticketPrice');
+            document.getElementById("formTitle").innerText = 'Regular Ticket Registration Form';
+            document.getElementById("totalPrice").innerText = 'N/A';
 
             // Dynamically set the form title based on the ticket type
             function setTicketInfo(type, price) {
@@ -176,69 +183,48 @@
                 window.location.href = "registeration.html";
             }
 
-            document.getElementById("tickets").addEventListener("change", function () {
-                var ticketDetails = document.getElementById("ticketDetails");
-                var ticketFields = document.getElementById("ticketFields");
-                ticketFields.innerHTML = "";
+            // Update the ticket price based on the selected ticket type
+            window.updateTicketPrice = function () {
+                var ticketType = document.getElementById("ticketType").value;
+                var ticketPrice = ticketType === "vip" ? 30000 : 10000;
 
-                if (this.value > 1) {
-                    ticketDetails.style.display = "block";
-                    for (var i = 1; i <= this.value; i++) {
-                        var nameLabel = document.createElement("label");
-                        nameLabel.textContent = "Ticket Holder " + i + " Name:";
-                        ticketFields.appendChild(nameLabel);
+                // Save ticket type and price to local storage
+                localStorage.setItem('ticketType', ticketType);
+                localStorage.setItem('ticketPrice', ticketPrice);
 
-                        var nameInput = document.createElement("input");
-                        nameInput.type = "text";
-                        nameInput.id = "ticketName" + i;
-                        nameInput.name = "ticketName" + i;
-                        nameInput.placeholder = "Enter ticket holder " + i + "'s name";
-                        ticketFields.appendChild(nameInput);
+                // Update form title and total price
+                document.getElementById("formTitle").innerText = ticketType.charAt(0).toUpperCase() + ticketType.slice(1) + ' Ticket Registration Form';
+                document.getElementById("totalPrice").innerText = 'N' + ticketPrice;
 
-                        var emailLabel = document.createElement("label");
-                        emailLabel.textContent = "Ticket Holder " + i + " Email:";
-                        ticketFields.appendChild(emailLabel);
-
-                        var emailInput = document.createElement("input");
-                        emailInput.type = "email";
-                        emailInput.id = "ticketEmail" + i;
-                        emailInput.name = "ticketEmail" + i;
-                        emailInput.placeholder = "Enter ticket holder " + i + "'s email";
-                        ticketFields.appendChild(emailInput);
-                    }
-                } else {
-                    ticketDetails.style.display = "none";
-                }
-
-                // Update the total price
+                // Update the total price if tickets are already selected
                 updateTotalPrice();
-            });
+            };
 
-            function updateTotalPrice() {
+            // Update the total price when the number of tickets changes
+            window.updateTotalPrice = function () {
                 var numberOfTickets = document.getElementById("tickets").value;
                 var ticketPrice = localStorage.getItem('ticketPrice');
                 var totalPrice = numberOfTickets * ticketPrice;
                 document.getElementById("totalPrice").innerText = 'N' + totalPrice.toFixed(2);
-            }
+            };
         });
 
         function submitForm() {
-        
+
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-    const container = document.querySelector(".container");
-    const arrow = document.querySelector(".container::after");
+            const container = document.querySelector(".container");
 
-    container.addEventListener("scroll", function () {
-        if (container.scrollTop > 0) {
-            arrow.style.display = "none";
-        } else {
-            arrow.style.display = "block";
-        }
-    });
-});
+            container.addEventListener("scroll", function () {
+                const arrow = document.querySelector(".arrow-down");
+                if (container.scrollTop > 0) {
+                    arrow.style.display = "none";
+                } else {
+                    arrow.style.display = "block";
+                }
+            });
+        });
     </script>
-    <script src="scripts.js"></script>
 </body>
 </html>

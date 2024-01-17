@@ -91,7 +91,7 @@ body {
             background-color:#BC2303;
             color: #F5DB51;
             padding: 10px 50px 10px 50px;
-            border-radius: 4px;
+            border-radius: 6px;
             text-align: center;
             display: inline-block;
             font-size: 16px;
@@ -100,7 +100,9 @@ body {
             margin-left: 10px;
             margin-right: 10px;
             border: none;
-        }
+             box-shadow: 0 0 10px #F5DB51;
+            }
+        
         .get-tickets-btn:hover, .platinum-ticket-link:hover, .comfort-ticket-link:hover{
             background: #F5DB51;
             color: #BC2303;
