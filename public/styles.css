@@ -26,7 +26,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     border: 1px solid #ffffff;
-    background: #BC2303;
+    background: #17A7DB;
 }
 
 .animated-text {
@@ -92,8 +92,8 @@ body {
 }
 
 .get-tickets-btn {
-    background-color: #BC2303;
-    color: #F5DB51;
+    background-color: #17A7DB;
+    color: black;
     padding: 10px 45px 10px 45px;
     border-radius: 6px;
     text-align: center;
@@ -105,13 +105,13 @@ body {
     margin-left: 10px;
     margin-right: 10px;
     border: none;
-    box-shadow: 0 0 10px #F5DB51;
+    box-shadow: 0 0 10px #07455C;
 }
 
 .get-tickets-btn:hover,
 .platinum-ticket-link:hover,
 .comfort-ticket-link:hover {
-    background: #F5DB51;
+    background: #07455C;
     color: #BC2303;
     cursor: pointer;
 }
@@ -119,7 +119,7 @@ body {
 .platinum-ticket-link,
 .comfort-ticket-link {
     text-decoration: none;
-    color: #F5DB51;
+    color: black;
 }
 
 
