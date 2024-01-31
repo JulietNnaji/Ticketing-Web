@@ -1,7 +1,7 @@
 {
     "hosting": [
       {
-        "target": "chronicles-of-ushbebe",
+        "target": "erigga-live",
         "public": "public",
         "ignore": [
           "firebase.json",
